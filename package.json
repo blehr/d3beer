@@ -2,7 +2,7 @@
   "name": "d3beer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://blehr.github.io/d3-beer",
+  "homepage": "https://blehr.github.io/d3beer",
   "dependencies": {
     "d3": "^5.11.0",
     "d3-fetch": "^1.1.2",
