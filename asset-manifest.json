@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/d3beer/static/css/main.a1d9fe47.chunk.css",
-    "main.js": "/d3beer/static/js/main.d2fc4ce6.chunk.js",
-    "main.js.map": "/d3beer/static/js/main.d2fc4ce6.chunk.js.map",
+    "main.css": "/d3beer/static/css/main.00e0f6eb.chunk.css",
+    "main.js": "/d3beer/static/js/main.f4a39b5a.chunk.js",
+    "main.js.map": "/d3beer/static/js/main.f4a39b5a.chunk.js.map",
     "runtime~main.js": "/d3beer/static/js/runtime~main.263e9025.js",
     "runtime~main.js.map": "/d3beer/static/js/runtime~main.263e9025.js.map",
     "static/js/2.7fbf7a23.chunk.js": "/d3beer/static/js/2.7fbf7a23.chunk.js",
     "static/js/2.7fbf7a23.chunk.js.map": "/d3beer/static/js/2.7fbf7a23.chunk.js.map",
     "index.html": "/d3beer/index.html",
-    "precache-manifest.9963797d0b9e4fee1d1a7e7d478159ec.js": "/d3beer/precache-manifest.9963797d0b9e4fee1d1a7e7d478159ec.js",
+    "precache-manifest.0f021c8853169de4dd258e5044cbdaba.js": "/d3beer/precache-manifest.0f021c8853169de4dd258e5044cbdaba.js",
     "service-worker.js": "/d3beer/service-worker.js",
-    "static/css/main.a1d9fe47.chunk.css.map": "/d3beer/static/css/main.a1d9fe47.chunk.css.map",
+    "static/css/main.00e0f6eb.chunk.css.map": "/d3beer/static/css/main.00e0f6eb.chunk.css.map",
     "static/media/states.csv": "/d3beer/static/media/states.a2067fe0.csv"
   }
 }
