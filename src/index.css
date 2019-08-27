@@ -60,11 +60,13 @@ p {
   text-align: center;
 }
 
-#menu select {
+select {
   font-size: 1.1rem;
+  padding: 8px;
+  border-radius: 5px;
 }
 
-#menu select option {
+select option {
   font-size: 1rem;
 }
 .breweries {

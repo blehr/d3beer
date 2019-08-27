@@ -65,12 +65,12 @@ export default class Map extends Component {
       .attr("width", innerWidth)
       .attr("height", innerHeight)
       .attr("transform", `translate(${margin.left},${margin.top})`);
-
+console.log(innerWidth)
     // set projection
     var projection = d3
       .geoAlbersUsa()
-      .scale(1440)
-      .translate([innerWidth / 2, innerHeight / 2 - 50]);
+      .scale(innerWidth)
+      .translate([innerWidth / 2, Math.min((innerWidth / 2) - 75, ((innerHeight /2) - 75))]);
 
     // create path variable
     var path = d3.geoPath().projection(projection);
