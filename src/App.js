@@ -21,6 +21,7 @@ export default class App extends Component {
   state = {
     states: [],
     brews: [],
+    counties: [],
     us: {},
     selectedProperty: "annual_per_capita_consumption",
     selectedOption: {
@@ -34,7 +35,7 @@ export default class App extends Component {
   
   loadAllData = () => {
     loadData().then(res => {
-      this.setState({ states: res.states, us: res.us, brews: res.brews });
+      this.setState({ states: res.states, us: res.us, brews: res.brews, counties: res.counties });
     });
   };
   onOptionClicked = property => {
@@ -46,13 +47,14 @@ export default class App extends Component {
   
 
   render() {
-    const { states, selectedOption, brews } = this.state;
+    const { states, selectedOption, brews, counties } = this.state;
     return <div>
       <h1>Beer in the USA</h1>
       <p>zoom in and hover to view Breweries</p>
       <DropdownMenu options={options} onOptionClicked={this.onOptionClicked} selectedOption={selectedOption} />
       <Map
         states={states}
+        counties={counties}
         brews={brews}
         selectedOption={selectedOption}
       />

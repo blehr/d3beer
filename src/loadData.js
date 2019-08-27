@@ -1,15 +1,17 @@
-import {csv} from 'd3-fetch'
-import stateJson from './data/us-json.json'
-import csvFile from './data/states.csv'
-import brewJson from './data/open-beer-database-breweries.json';
+import { csv } from "d3-fetch";
+import stateJson from "./data/us-json.json";
+import csvFile from "./data/states.csv";
+import brewJson from "./data/open-beer-database-breweries.json";
 
 import { feature } from "topojson";
 
 export const loadData = () =>
-  Promise.all([csv(csvFile)]).then(
-    ([csvData]) => {
-      const stateFeatures = feature(stateJson, stateJson.objects.states).features
-      
+  Promise.all([csv(csvFile)])
+    .then(([csvData]) => {
+      const stateFeatures = feature(stateJson, stateJson.objects.states)
+        .features;
+      const countyFeatures = feature(stateJson, stateJson.objects.counties)
+        .features;
 
       const rowById = csvData.reduce((accumulator, d) => {
         accumulator[+d.id] = d;
@@ -27,6 +29,11 @@ export const loadData = () =>
 
       const brewToReturn = brewJson.features.filter(d => d.geometry);
 
-      return { states, us: stateJson, brews: brewToReturn };
-    }
-  ).catch(err => console.log(err));
+      return {
+        states,
+        us: stateJson,
+        brews: brewToReturn,
+        counties: countyFeatures
+      };
+    })
+    .catch(err => console.log(err));

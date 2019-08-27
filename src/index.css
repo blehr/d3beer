@@ -26,6 +26,11 @@ p {
 .states:hover {
   fill: yellow;
 }
+.counties {
+  fill: none;
+  stroke: black;
+  stroke-width: .06px;
+}
 
 .d3-tip {
   font-family: "Open Sans", sans-serif;
@@ -65,6 +70,6 @@ p {
 .breweries {
   fill: red;
   opacity: .4;
-  stroke: white;
-  stroke-width: .2;
+  /* stroke: white; */
+  /* stroke-width: .2; */
 }

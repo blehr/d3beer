@@ -41,7 +41,8 @@ export default class Map extends Component {
   };
 
   renderMap = () => {
-    const { states, brews, selectedOption } = this.props;
+    const { states, brews, selectedOption, counties } = this.props;
+    let zoom = 5;
 
     const svg = d3.select("svg");
     svg.select("g").remove();
@@ -52,9 +53,9 @@ export default class Map extends Component {
 
     const margin = {
       top: 25,
-      bottom: 50,
-      left: 100,
-      right: 100
+      bottom: 0,
+      left: 10,
+      right: 10
     };
 
     const innerWidth = width - margin.left - margin.right;
@@ -83,13 +84,23 @@ export default class Map extends Component {
     const gEnter = gUpdate.enter().append("g");
     const g = gUpdate.merge(gEnter);
 
+    const scale = d3
+      .scaleSqrt()
+      .domain([0.1, 40])
+      .range([1, 1.2]);
+
     mapG.call(
       d3.zoom().on("zoom", () => {
+        zoom = d3.event.transform.k;
+        if (zoom > 40) return;
         g.attr("transform", d3.event.transform);
+
+        brewGUpdate.attr(
+          "d",
+          path.pointRadius(d => scale(Math.max(40 - zoom, 0.1)))
+        );
       })
     );
-
-    const statePaths = g.selectAll(".states").data(states);
 
     var tip = d3Tip()
       .attr("class", "d3-tip")
@@ -103,6 +114,17 @@ export default class Map extends Component {
         ].join("");
       });
     mapG.call(tip);
+
+    var brewTip = d3Tip()
+      .attr("class", "d3-tip")
+      .html(d => {
+        return [
+          `${d.properties.name_breweries} - ${d.properties.city}, ${d.properties.state}`
+        ].join("");
+      });
+    mapG.call(brewTip);
+
+    const statePaths = g.selectAll(".states").data(states);
 
     const statePathsEnter = statePaths
       .enter()
@@ -125,22 +147,21 @@ export default class Map extends Component {
 
     statePaths.exit().remove();
 
-    var brewTip = d3Tip()
-    .attr("class", "d3-tip")
-    .html(d => {
-      return [
-        `${d.properties.name_breweries} - ${d.properties.city}, ${d.properties.state}`,
-      ].join("");
-    });
-  mapG.call(brewTip);
+    const countyPaths = g.selectAll(".counties").data(counties);
+
+    const countyPathsEnter = countyPaths
+      .enter()
+      .append("path")
+      .attr("class", "counties");
+
+    countyPaths.merge(countyPathsEnter).attr("d", path);
 
     const brewGs = g.selectAll(".breweries").data(brews);
     const brewGsEnter = brewGs.enter().append("path");
-    brewGs
+    const brewGUpdate = brewGs
       .merge(brewGsEnter)
       .attr("class", "breweries")
-      .attr("d", path)
-      .attr("r", "3px")
+      .attr("d", path.pointRadius(d => scale(39)))
       .on("mouseover", function(d) {
         brewTip.show(d, this);
       })
