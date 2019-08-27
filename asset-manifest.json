@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/d3-beer/static/css/main.d45fec36.chunk.css",
+    "main.js": "/d3-beer/static/js/main.4bbba5f3.chunk.js",
+    "main.js.map": "/d3-beer/static/js/main.4bbba5f3.chunk.js.map",
+    "runtime~main.js": "/d3-beer/static/js/runtime~main.24159cc3.js",
+    "runtime~main.js.map": "/d3-beer/static/js/runtime~main.24159cc3.js.map",
+    "static/js/2.b7f8d678.chunk.js": "/d3-beer/static/js/2.b7f8d678.chunk.js",
+    "static/js/2.b7f8d678.chunk.js.map": "/d3-beer/static/js/2.b7f8d678.chunk.js.map",
+    "index.html": "/d3-beer/index.html",
+    "precache-manifest.359c26f3f022401a17764c3ee4502fa0.js": "/d3-beer/precache-manifest.359c26f3f022401a17764c3ee4502fa0.js",
+    "service-worker.js": "/d3-beer/service-worker.js",
+    "static/css/main.d45fec36.chunk.css.map": "/d3-beer/static/css/main.d45fec36.chunk.css.map",
+    "static/media/states.csv": "/d3-beer/static/media/states.a2067fe0.csv"
+  }
+}
