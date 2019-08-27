@@ -13,6 +13,9 @@ h1 {
   margin: 0;
   margin-top: 15px;
 }
+p {
+  text-align: center;
+}
 
 .states {
   stroke: #fff;
@@ -58,4 +61,10 @@ h1 {
 
 #menu select option {
   font-size: 1rem;
+}
+.breweries {
+  fill: red;
+  opacity: .4;
+  stroke: white;
+  stroke-width: .2;
 }

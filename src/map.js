@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import * as d3 from 'd3'
+import React, { Component } from "react";
+import * as d3 from "d3";
 
 import d3Tip from "d3-tip";
 
@@ -24,31 +24,27 @@ const showBottomTipIds = [
 
 export default class Map extends Component {
   getValue = (option, value) => {
-    switch(option) {
-      case 'annual_per_capita_consumption':
+    switch (option) {
+      case "annual_per_capita_consumption":
         return `${value} gallons`;
-      case 'total_beer_consumption':
+      case "total_beer_consumption":
         return `${value} million gallons`;
-      case 'five_yr_consumption_change':
+      case "five_yr_consumption_change":
         return `${value}%`;
-      case 'bars_resturants_per_1000_people':
+      case "bars_resturants_per_1000_people":
         return `${value}`;
-      case 'beer_tax_rate':
+      case "beer_tax_rate":
         return `$${value} per gallon`;
       default:
-        return '';
+        return "";
     }
-  }
-  
+  };
+
   renderMap = () => {
-    const {
-      states,
-      mapPoints,
-      selectedOption
-    } = this.props;
+    const { states, brews, selectedOption } = this.props;
 
     const svg = d3.select("svg");
-    svg.select('g').remove();
+    svg.select("g").remove();
     const mapG = svg.append("g");
     const width = document.body.clientWidth;
     const height = document.body.clientHeight;
@@ -97,12 +93,13 @@ export default class Map extends Component {
 
     var tip = d3Tip()
       .attr("class", "d3-tip")
-      .html((d) => {
+      .html(d => {
         return [
           d.properties.name,
-          `<div><p>${selectedOption.name}: </p><p>${
-            this.getValue(selectedOption.value, d.properties[selectedOption.value])
-          }</p></div>`
+          `<div><p>${selectedOption.name}: </p><p>${this.getValue(
+            selectedOption.value,
+            d.properties[selectedOption.value]
+          )}</p></div>`
         ].join("");
       });
     mapG.call(tip);
@@ -126,20 +123,40 @@ export default class Map extends Component {
       })
       .on("mouseout", tip.hide);
 
-      statePaths.exit().remove();
+    statePaths.exit().remove();
 
-    const circles = g.selectAll("circle").data(mapPoints);
+    var brewTip = d3Tip()
+    .attr("class", "d3-tip")
+    .html(d => {
+      return [
+        `${d.properties.name_breweries} - ${d.properties.city}, ${d.properties.state}`,
+      ].join("");
+    });
+  mapG.call(brewTip);
 
-    const circlesEnter = circles.enter().append("circle");
+    const brewGs = g.selectAll(".breweries").data(brews);
+    const brewGsEnter = brewGs.enter().append("path");
+    brewGs
+      .merge(brewGsEnter)
+      .attr("class", "breweries")
+      .attr("d", path)
+      .attr("r", "3px")
+      .on("mouseover", function(d) {
+        brewTip.show(d, this);
+      })
+      .on("mouseout", brewTip.hide);
 
-    circles
-      .merge(circlesEnter)
-      .attr("cx", d => projection(d)[0])
-      .attr("cy", d => projection(d)[1])
-      .attr("r", "4px")
-      .attr("fill", "red");
+    // const circles = g.selectAll("circle").data(mapPoints);
+
+    // const circlesEnter = circles.enter().append("circle");
+
+    // circles
+    //   .merge(circlesEnter)
+    //   .attr("cx", d => projection(d)[0])
+    //   .attr("cy", d => projection(d)[1])
+    //   .attr("r", "4px")
+    //   .attr("fill", "red");
   };
-  
 
   render() {
     this.renderMap();

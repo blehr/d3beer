@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Map from "./map";
 import { loadData } from "./loadData";
-import { mapPoints } from "./mapPoints";
 import DropdownMenu from "./dropdownMenu";
 
 const options = [
@@ -21,6 +20,7 @@ const options = [
 export default class App extends Component {
   state = {
     states: [],
+    brews: [],
     us: {},
     selectedProperty: "annual_per_capita_consumption",
     selectedOption: {
@@ -34,7 +34,7 @@ export default class App extends Component {
   
   loadAllData = () => {
     loadData().then(res => {
-      this.setState({ states: res.states, us: res.us });
+      this.setState({ states: res.states, us: res.us, brews: res.brews });
     });
   };
   onOptionClicked = property => {
@@ -46,14 +46,15 @@ export default class App extends Component {
   
 
   render() {
-    const { states, selectedOption } = this.state;
+    const { states, selectedOption, brews } = this.state;
     return <div>
       <h1>Beer in the USA</h1>
+      <p>zoom in and hover to view Breweries</p>
       <DropdownMenu options={options} onOptionClicked={this.onOptionClicked} selectedOption={selectedOption} />
       <Map
         states={states}
+        brews={brews}
         selectedOption={selectedOption}
-        mapPoints={mapPoints}
       />
     </div>;
   }
