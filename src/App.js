@@ -48,6 +48,7 @@ export default class App extends Component {
   render() {
     const { states, selectedOption } = this.state;
     return <div>
+      <h1>Beer in the USA</h1>
       <DropdownMenu options={options} onOptionClicked={this.onOptionClicked} selectedOption={selectedOption} />
       <Map
         states={states}

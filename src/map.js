@@ -55,7 +55,7 @@ export default class Map extends Component {
     const colorValue = d => +d.properties[selectedOption.value];
 
     const margin = {
-      top: 50,
+      top: 25,
       bottom: 50,
       left: 100,
       right: 100
@@ -72,8 +72,8 @@ export default class Map extends Component {
     // set projection
     var projection = d3
       .geoAlbersUsa()
-      .scale(1600)
-      .translate([innerWidth / 2, innerHeight / 2]);
+      .scale(1440)
+      .translate([innerWidth / 2, innerHeight / 2 - 50]);
 
     // create path variable
     var path = d3.geoPath().projection(projection);
@@ -81,7 +81,7 @@ export default class Map extends Component {
     const blue = d3
       .scaleSequential()
       .domain(d3.extent(states.map(colorValue)))
-      .interpolator(d3.interpolateBlues);
+      .interpolator(d3.interpolateYlGnBu);
 
     const gUpdate = mapG.selectAll("g").data([null]);
     const gEnter = gUpdate.enter().append("g");

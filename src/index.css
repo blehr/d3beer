@@ -8,6 +8,11 @@ body, #root {
   right: 0;
   left: 0;
 }
+h1 {
+  text-align: center;
+  margin: 0;
+  margin-top: 15px;
+}
 
 .states {
   stroke: #fff;
@@ -43,12 +48,12 @@ body, #root {
 
 #menu {
   margin-top: 25px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: center;
 }
 
 #menu select {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 #menu select option {
