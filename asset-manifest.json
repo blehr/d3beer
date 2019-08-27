@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/d3beer/static/css/main.d45fec36.chunk.css",
-    "main.js": "/d3beer/static/js/main.4bbba5f3.chunk.js",
-    "main.js.map": "/d3beer/static/js/main.4bbba5f3.chunk.js.map",
+    "main.js": "/d3beer/static/js/main.f1ac5e77.chunk.js",
+    "main.js.map": "/d3beer/static/js/main.f1ac5e77.chunk.js.map",
     "runtime~main.js": "/d3beer/static/js/runtime~main.263e9025.js",
     "runtime~main.js.map": "/d3beer/static/js/runtime~main.263e9025.js.map",
     "static/js/2.b7f8d678.chunk.js": "/d3beer/static/js/2.b7f8d678.chunk.js",
     "static/js/2.b7f8d678.chunk.js.map": "/d3beer/static/js/2.b7f8d678.chunk.js.map",
     "index.html": "/d3beer/index.html",
-    "precache-manifest.6e68ba6c72b6d2a76c0bab28a9536fbb.js": "/d3beer/precache-manifest.6e68ba6c72b6d2a76c0bab28a9536fbb.js",
+    "precache-manifest.453b8a77a46aacf1f439dd134c2350c3.js": "/d3beer/precache-manifest.453b8a77a46aacf1f439dd134c2350c3.js",
     "service-worker.js": "/d3beer/service-worker.js",
     "static/css/main.d45fec36.chunk.css.map": "/d3beer/static/css/main.d45fec36.chunk.css.map",
     "static/media/states.csv": "/d3beer/static/media/states.a2067fe0.csv"
