@@ -1,17 +1,3 @@
-// import d3, {
-//   select,
-//   selectAll,
-//   geoPath,
-//   geoAlbersUsa,
-//   max,
-//   scaleSequential,
-//   interpolateBlues,
-//   event,
-//   zoom,
-//   tip,
-//   extent
-// } from "d3";
-
 import React, {Component} from 'react'
 import * as d3 from 'd3'
 
@@ -37,6 +23,22 @@ const showBottomTipIds = [
 ];
 
 export default class Map extends Component {
+  getValue = (option, value) => {
+    switch(option) {
+      case 'annual_per_capita_consumption':
+        return `${value} gallons`;
+      case 'total_beer_consumption':
+        return `${value} million gallons`;
+      case 'five_yr_consumption_change':
+        return `${value}%`;
+      case 'bars_resturants_per_1000_people':
+        return `${value}`;
+      case 'beer_tax_rate':
+        return `$${value} per gallon`;
+      default:
+        return '';
+    }
+  }
   
   renderMap = () => {
     const {
@@ -95,28 +97,12 @@ export default class Map extends Component {
 
     var tip = d3Tip()
       .attr("class", "d3-tip")
-      .html(function(d) {
+      .html((d) => {
         return [
           d.properties.name,
           `<div><p>${selectedOption.name}: </p><p>${
-            d.properties[selectedOption.value]
+            this.getValue(selectedOption.value, d.properties[selectedOption.value])
           }</p></div>`
-          // "<div><p>Annual per capita consumption: </p><p>",
-          // d.properties.annual_per_capita_consumption,
-          // " gallons</p></div>",
-          // "<div><p>Total Beer Consumption: </p><p> ",
-          // d.properties.total_beer_consumption,
-          // " million gallons</p></div>",
-          // "<div><p>5 yr Consumption Change: </p><p>",
-          // d.properties.five_yr_consumption_change,
-          // "%",
-          // "</p></div>",
-          // "<div><p>Bars and restaurants / 100,000 people: </p><p>",
-          // d.properties.bars_resturants_per_1000_people,
-          // "</p></div>",
-          // "<div><p>Beer tax rate: </p><p>$",
-          // d.properties.beer_tax_rate,
-          // " per gallon</p></div>"
         ].join("");
       });
     mapG.call(tip);
