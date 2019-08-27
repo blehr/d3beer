@@ -65,7 +65,6 @@ export default class Map extends Component {
       .attr("width", innerWidth)
       .attr("height", innerHeight)
       .attr("transform", `translate(${margin.left},${margin.top})`);
-console.log(innerWidth)
     // set projection
     var projection = d3
       .geoAlbersUsa()

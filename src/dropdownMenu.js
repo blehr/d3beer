@@ -14,6 +14,7 @@ export default class DropdownMenu extends Component {
       .enter()
       .append("select")
       .merge(select)
+      .attr('class', 'select-css')
       .on("change", function() {
         onOptionClicked(this.value);
       });
