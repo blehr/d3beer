@@ -28,7 +28,6 @@ export const loadData = () =>
       );
 
       const brewToReturn = brewJson.features.filter(d => d.geometry);
-
       return {
         states,
         us: stateJson,

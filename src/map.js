@@ -141,6 +141,7 @@ export default class Map extends Component {
           tip.direction("n");
         }
         tip.show(d, this);
+        d3.select('.d3-tip').attr('x', innerWidth / 2).attr('y', innerHeight / 2);
       })
       .on("mouseout", tip.hide);
 
