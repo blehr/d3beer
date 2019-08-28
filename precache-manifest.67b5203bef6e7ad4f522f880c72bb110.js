@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c0b9504a9f825ae44f37676c226285b3",
+    "revision": "9447d498ffa7d5f4f736216f8f28ae1e",
     "url": "/d3beer/index.html"
   },
   {
-    "revision": "24c5b07a913ec86e8aef",
-    "url": "/d3beer/static/css/main.00e0f6eb.chunk.css"
+    "revision": "64517999a34d3392e5cc",
+    "url": "/d3beer/static/css/main.64975d3e.chunk.css"
   },
   {
     "revision": "4aa8db807df1e5eeef78",
     "url": "/d3beer/static/js/2.7fbf7a23.chunk.js"
   },
   {
-    "revision": "24c5b07a913ec86e8aef",
-    "url": "/d3beer/static/js/main.f4a39b5a.chunk.js"
+    "revision": "64517999a34d3392e5cc",
+    "url": "/d3beer/static/js/main.edc87c88.chunk.js"
   },
   {
     "revision": "50a8ff4f9d2412522afa",
