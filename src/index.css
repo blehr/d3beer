@@ -60,20 +60,13 @@ p {
   text-align: center;
 }
 
-/* select {
-  font-size: 1.1rem;
-  padding: 8px;
-  border-radius: 5px;
-}
 
-select option {
-  font-size: 1rem;
-} */
 .breweries {
   fill: red;
-  opacity: .4;
-  /* stroke: white; */
-  /* stroke-width: .2; */
+  opacity: .5;
+  stroke: black;
+  stroke-width: .05
+
 }
 
 .select-css {
@@ -117,3 +110,11 @@ select option {
 .select-css option {
 	font-weight:normal;
 }
+
+.driving {
+  fill: red;
+  opacity: .3;
+  stroke: black;
+  stroke-width: .05
+}
+

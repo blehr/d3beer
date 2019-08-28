@@ -14,7 +14,15 @@ const options = [
     value: "bars_resturants_per_1000_people",
     name: "Bars and restaurants per 100,000 people"
   },
-  { value: "beer_tax_rate", name: "Beer tax rate" }
+  { value: "beer_tax_rate", name: "Beer tax rate" },
+  {
+    value: "All Ages, 2012",
+    name: "Impaired Driving Deaths All Ages - 2012"
+  },
+  {
+    value: "All Ages, 2014",
+    name: "Impaired Driving Deaths All Ages - 2014"
+  },
 ];
 
 export default class App extends Component {

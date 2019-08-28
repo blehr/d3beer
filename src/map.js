@@ -24,17 +24,22 @@ const showBottomTipIds = [
 
 export default class Map extends Component {
   getValue = (option, value) => {
+    const returnValue = value ? value : "unknown";
     switch (option) {
       case "annual_per_capita_consumption":
-        return `${value} gallons`;
+        return `${returnValue} gallons`;
       case "total_beer_consumption":
-        return `${value} million gallons`;
+        return `${returnValue} million gallons`;
       case "five_yr_consumption_change":
-        return `${value}%`;
+        return `${returnValue}%`;
       case "bars_resturants_per_1000_people":
-        return `${value}`;
+        return `${returnValue}`;
       case "beer_tax_rate":
-        return `$${value} per gallon`;
+        return `$${returnValue} per gallon`;
+      case "All Ages, 2012":
+        return `${returnValue}`;
+      case "All Ages, 2014":
+        return `${returnValue}`;
       default:
         return "";
     }
@@ -50,6 +55,7 @@ export default class Map extends Component {
     const width = document.body.clientWidth;
     const height = document.body.clientHeight;
     const colorValue = d => +d.properties[selectedOption.value];
+    const drivingValue = d => +d.properties["All Ages, 2014"];
 
     const margin = {
       top: 25,
@@ -69,10 +75,17 @@ export default class Map extends Component {
     var projection = d3
       .geoAlbersUsa()
       .scale(innerWidth)
-      .translate([innerWidth / 2, Math.min((innerWidth / 2) - 75, ((innerHeight /2) - 75))]);
+      .translate([
+        innerWidth / 2,
+        Math.min(innerWidth / 2 - 75, innerHeight / 2 - 75)
+      ]);
 
     // create path variable
     var path = d3.geoPath().projection(projection);
+
+    states.forEach(d => {
+      d.properties.projected = projection(d3.geoCentroid(d));
+    })
 
     const blue = d3
       .scaleSequential()
@@ -87,6 +100,12 @@ export default class Map extends Component {
       .scaleSqrt()
       .domain([0.1, 40])
       .range([1, 1.2]);
+
+      
+    const drivingScale = d3
+      .scaleSqrt()
+      .domain(d3.extent(states.map(drivingValue)))
+      .range([3, 25]);
 
     mapG.call(
       d3.zoom().on("zoom", () => {
@@ -141,7 +160,9 @@ export default class Map extends Component {
           tip.direction("n");
         }
         tip.show(d, this);
-        d3.select('.d3-tip').attr('x', innerWidth / 2).attr('y', innerHeight / 2);
+        d3.select(".d3-tip")
+          .attr("x", innerWidth / 2)
+          .attr("y", innerHeight / 2);
       })
       .on("mouseout", tip.hide);
 
@@ -167,16 +188,16 @@ export default class Map extends Component {
       })
       .on("mouseout", brewTip.hide);
 
-    // const circles = g.selectAll("circle").data(mapPoints);
-
-    // const circlesEnter = circles.enter().append("circle");
-
-    // circles
-    //   .merge(circlesEnter)
-    //   .attr("cx", d => projection(d)[0])
-    //   .attr("cy", d => projection(d)[1])
-    //   .attr("r", "4px")
-    //   .attr("fill", "red");
+    
+    
+  //   const drivingGs = g.selectAll(".driving").data(states);
+  //   const drivingGsEnter = drivingGs.enter().append("circle");
+  //   const drivingGsUpdate = drivingGs
+  //     .merge(drivingGsEnter)
+  //     .attr("class", "driving")
+  //     .attr('cx', d => d.properties.projected[0])
+  //     .attr('cy', d => d.properties.projected[1])
+  //     .attr('r', d => drivingScale(drivingValue(d)))
   };
 
   render() {
